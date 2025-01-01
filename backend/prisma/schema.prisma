@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Campaign {
+  campaignId       Int       @id @default(autoincrement())
+  name             String       @unique
+  description      String?
+  startDate        DateTime
+  endDate          DateTime
+  targetCategoryId Int?
+  discountType     DiscountType
+  discountValue    Float
+  maxUsageLimit    Int?
+  minCartValue     Float?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  targetCategory   Category?    @relation(fields: [targetCategoryId], references: [categoryId])
+  coupons          Coupon[]
+}
+
+model Coupon {
+  couponId   Int   @id @default(autoincrement())
+  code       String   @unique
+  campaignId Int
+  userId     Int      
+  startDate  DateTime
+  expiryDate DateTime
+  usedCount  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  campaign   Campaign @relation(fields: [campaignId], references: [campaignId], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  @@unique([userId, campaignId])
+}
+
+model Category {
+  categoryId       Int            @id @default(autoincrement())
+  name             String         @unique
+  description      String?
+  minSpend         Float?
+  maxSpend         Float?
+  dateJoinedBefore DateTime?
+  creditCardTypeIN  String?
+  lastLoginOption  String?         
+  lastLoginThreshold DateTime?
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  campaigns        Campaign[]     
+  users            UserCategory[] 
+}
+
+model User {
+  userId         Int            @id @default(autoincrement())
+  email          String         @unique
+  name           String?
+  dateJoined     DateTime
+  totalSpend     Float          @default(0)
+  lastLogin      DateTime?
+  creditCardType String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  coupons        Coupon[]
+  categories     UserCategory[]
+}
+
+model UserCategory {
+  userCategoryId Int      @id @default(autoincrement())
+  userId         Int
+  categoryId     Int
+  createdAt      DateTime @default(now())
+  category       Category @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
+  user           User     @relation(fields: [userId], references: [userId])
+
+  @@unique([userId, categoryId])
+}
+
+enum DiscountType {
+  PERCENTAGE
+  AMOUNT
+}
