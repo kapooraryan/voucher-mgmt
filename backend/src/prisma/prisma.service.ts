@@ -7,7 +7,7 @@ export class PrismaService extends PrismaClient {
     super({
       datasources: {
         db: {
-          url: 'postgresql://postgres:123@localhost:5434/nest?schema=public',
+          url: 'postgresql://user:MKTK8npUuQNZXSzvTL9EzAJ8MBBEtckx@dpg-ctr66s5ds78s73diiv3g-a.singapore-postgres.render.com/vouchermgmtdb',
         },
       },
     });
