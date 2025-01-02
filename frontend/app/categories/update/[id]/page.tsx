@@ -34,7 +34,7 @@ const creditCardTypes = [
 ];
 
 const getCategoryById = async (id: number) => {
-  const res = await fetch(`http://localhost:3333/categories/${id}`);
+  const res = await fetch(`https://yearling-penny-napersonal-3fbe45d2.koyeb.app/categories/${id}`);
   if (!res.ok) {
     throw new Error('Failed to fetch category');
   }
@@ -42,7 +42,7 @@ const getCategoryById = async (id: number) => {
 };
 
 const updateCategory = async (id: number, data: Category) => {
-  const res = await fetch(`http://localhost:3333/categories/${id}`, {
+  const res = await fetch(`https://yearling-penny-napersonal-3fbe45d2.koyeb.app/categories/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

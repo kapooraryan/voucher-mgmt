@@ -11,7 +11,7 @@ interface Category {
 }
 
 const getCategories = async () => {
-  const res = await fetch("http://localhost:3333/categories");
+  const res = await fetch("https://yearling-penny-napersonal-3fbe45d2.koyeb.app/categories");
   return res.json();
 };
 
@@ -29,7 +29,7 @@ export default function CategoriesPage() {
 
   const handleDelete = async (id: number) => {
     try {
-      const res = await fetch(`http://localhost:3333/categories/${id}`, {
+      const res = await fetch(`https://yearling-penny-napersonal-3fbe45d2.koyeb.app/categories/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

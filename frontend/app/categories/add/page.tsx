@@ -33,7 +33,7 @@ const creditCardTypes = [
 ];
 
 const addCategory = async (categoryData: CategoryInput) => {
-  const res = await fetch('http://localhost:3333/categories', {
+  const res = await fetch('https://yearling-penny-napersonal-3fbe45d2.koyeb.app/categories', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

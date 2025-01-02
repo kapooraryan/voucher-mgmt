@@ -12,7 +12,7 @@ interface Category {
 }
 
 const getCategoryById = async (id: number) => {
-  const res = await fetch(`http://localhost:3333/categories/${id}`);
+  const res = await fetch(`https://yearling-penny-napersonal-3fbe45d2.koyeb.app/categories/${id}`);
   return res.json();
 };
 
