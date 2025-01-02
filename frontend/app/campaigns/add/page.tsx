@@ -23,13 +23,13 @@ interface CampaignInput {
 }
 
 const getCategories = async (): Promise<Category[]> => {
-  const res = await fetch('http://localhost:3333/categories');
+  const res = await fetch('https://yearling-penny-napersonal-3fbe45d2.koyeb.app/categories');
   if (!res.ok) throw new Error('Failed to fetch categories');
   return res.json();
 };
 
 const addCampaign = async (campaignData: CampaignInput) => {
-  const res = await fetch('http://localhost:3333/campaigns', {
+  const res = await fetch('https://yearling-penny-napersonal-3fbe45d2.koyeb.app/campaigns', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

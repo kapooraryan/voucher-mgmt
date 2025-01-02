@@ -9,7 +9,6 @@ import {
 } from '@nestjs/common';
 import { CampaignService } from './campaign.service';
 import { CampaignDto } from './dto';
-import { Campaign } from '@prisma/client';
 
 @Controller('campaigns')
 export class CampaignController {

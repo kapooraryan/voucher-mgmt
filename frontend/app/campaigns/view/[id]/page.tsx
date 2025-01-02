@@ -35,7 +35,7 @@ interface Campaign {
 }
 
 const getCampaignWithCoupons = async (id: number) => {
-  const res = await fetch(`http://localhost:3333/campaigns/${id}`);
+  const res = await fetch(`https://yearling-penny-napersonal-3fbe45d2.koyeb.app/campaigns/${id}`);
   return res.json();
 };
 
