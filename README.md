@@ -1,5 +1,10 @@
 # Voucher Mgmt
 
+## Deployments
+[Frontend](https://voucher-mgmt.vercel.app/)
+- **Backend:** [Category Management](https://yearling-penny-napersonal-3fbe45d2.koyeb.app/categories) & [Campaign Management](https://yearling-penny-napersonal-3fbe45d2.koyeb.app/campaigns)
+  **Note:** Backend was deployed using Koyeb and a separate repository [here](https://github.com/kapooraryan/backend) for the backend code because of the directory structure requirements. Postgres DB hosted on Render.
+
 ## Business Use Cases
 
 ### Category Management
